@@ -1,4 +1,4 @@
-import { arrowSymble, banner_bg } from "@/app/assets";
+import { arrowSymble, banner_bg, download_app } from "@/app/assets";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import SpecialOfferCard from "./SpecialOfferCard ";
@@ -24,11 +24,14 @@ const BannerSection = () => {
                 </div>
                 {/* special offer  */}
                <div className="flex justify-center">
-                <div className="relative">
+                <div className="">
                 <Image src={arrowSymble}   alt="Background Image" className="ml-20"/>
+                
                 </div>
                <SpecialOfferCard/>
                </div>
+               <h1 className="text-[#4A4A52] text-[14px]">Download App:</h1>
+               <Image src={download_app}   alt="Background Image" className="mt-2"/>
             </div>
             <div className=" ">
   <Image

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const SpecialOfferCard = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center bg-[#EBEBEB] rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto transform hover:scale-105 transition-transform duration-300">
+    <div className="-mt-6 flex flex-col md:flex-row justify-between items-center bg-[#EBEBEB] rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto transform hover:scale-105 transition-transform duration-300">
       {/* Card Content */}
       <div className="p-6 text-center md:text-left">
         {/* Special Offer Badge */}

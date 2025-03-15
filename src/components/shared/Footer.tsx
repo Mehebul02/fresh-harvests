@@ -5,6 +5,7 @@ import React from 'react';
 import { FaPhone } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { IoLocationOutline } from 'react-icons/io5';
+import SocialLinks from './SocialLinks';
 
 const Footer = () => {
   const menuItems = [
@@ -73,8 +74,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 text-center border-t-2 border-gray-300 pt-8">
+        <div className="flex justify-between items-center mt-8 text-center border-t-2 border-gray-300 pt-8">
           <p>© Copyright 2024. All Rights Reserved by Banana Studio</p>
+          <SocialLinks/>
         </div>
       </div>
     </footer>
