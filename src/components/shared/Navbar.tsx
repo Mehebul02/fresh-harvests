@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
    <div className="max-w-7x">
-     <nav className="bg-black text-white p-4 fixed w-full top-0 left-0 z-50">
+     <nav className=" text-white p-4 fixed w-full top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Left Side: Logo */}
         <div className="">
@@ -26,7 +26,7 @@ const Navbar = () => {
         </div>
 
         {/* Center: Menu Items */}
-        <div className="hidden md:flex gap-8 text-gray-300 absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden md:flex gap-8 text-[#4A4A52] absolute left-1/2 transform -translate-x-1/2">
           {menuItems.map((item) => (
             <Link key={item.path} href={item.path} className="text-[14px] relative group">
               {item.name}
