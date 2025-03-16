@@ -13,6 +13,7 @@ import mushroom from './images/about/Image2.png'
 import specialAbout from './images/about/specialAbout.jpg'
 import foodImage from './images/about/food2.png'
 import foodImage_mobile from './images/about/food_Bg_moblie.jpg'
+import testimonial_image from './images/testimolias.png'
 
 
 export {logo,
@@ -28,6 +29,7 @@ export {logo,
     mushroom,
     specialAbout,
     foodImage,
-    foodImage_mobile
+    foodImage_mobile,
+    testimonial_image
     
 }

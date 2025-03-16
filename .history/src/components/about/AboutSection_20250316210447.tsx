@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import TitleSection from "../shared/TitleSection";
 import CustomeButton from "../shared/CustomeButton";
 
-
 const AboutSection = () => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 md:px-16 py-12 sm:py-16">

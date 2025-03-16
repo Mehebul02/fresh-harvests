@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import TitleSection from "../shared/TitleSection";
 import CustomeButton from "../shared/CustomeButton";
 
-
 const AboutSection = () => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 md:px-16 py-12 sm:py-16">
@@ -51,14 +50,14 @@ const AboutSection = () => {
 
       {/* Right Side - Text Section */}
       <div className="w-full mx-auto md:w-1/2 space-y-4  md:text-left px-2 sm:px-4">
-        <TitleSection className="" title=" About us" subtitle="  About Fresh Harvest" description="Welcome to Fresh Harvest, your premier destination for high-quality and fresh produce. 
+      <TitleSection className="" title=" About us" subtitle="  About Fresh Harvest" description="Welcome to Fresh Harvest, your premier destination for high-quality and fresh produce. 
           We are passionate about providing you with the finest fruits, vegetables, and salad 
           ingredients to nourish your body and delight your taste buds. With a commitment to 
           excellence, sustainability, and customer satisfaction, Fresh Harvest is here to 
           revolutionize your grocery shopping experience."/>
-        {/* button  */}
-        <CustomeButton className="md:ml-10" text="Read More" />
-
+  {/* button  */}
+        <CustomeButton className="md:ml-10" text="Read More"/>
+        
       </div>
     </section>
   );

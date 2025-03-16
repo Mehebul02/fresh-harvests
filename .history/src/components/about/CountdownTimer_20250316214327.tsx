@@ -31,7 +31,7 @@ const CountdownTimer = ({ targetDate }:CountdownTimerProps) => {
   }, []);
 
   return (
-    <div className="flex space-x-4 justify-start items-center p-4">
+    <div className="flex space-x-4 justify- items-center p-4">
       {Object.entries(timeLeft).map(([unit, value]) => (
         <div key={unit} className="bg-white shadow-lg p-4 rounded-xl text-center w-20">
           <span className="text-2xl font-bold">{String(value).padStart(2, '0')}</span>

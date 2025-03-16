@@ -9,18 +9,18 @@ const BannerSection = () => {
     <div className="relative w-full min-h-screen flex items-center justify-center">
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
-      <Image
-  src={banner_bg}
-  alt="Background Image"
-  quality={100}
-  className="hidden md:block object-cover w-full h-full absolute"
-/>
-<Image
-  src={bg_mobile}
-  alt="Mobile Background"
-  quality={100}
-  className="block md:hidden object-cover w-full h-full absolute"
-/>
+        <Image
+          src={banner_bg}
+          alt="Background Image"
+          quality={100}
+          className="hidden md:block object-cover w-full h-full absolute"
+        />
+        <Image
+          src={bg_mobile}
+          alt="Mobile Background"
+          quality={100}
+          className="block md:hidden object-cover w-full h-full absolute"
+        />
 
       </div>
 
@@ -58,7 +58,7 @@ const BannerSection = () => {
         {/* Right Column - Image Section */}
         <div className="hidden md:flex justify-end mt-40">
           <Image
-            src={bg_women} 
+            src={bg_women}
             alt="Featured Product"
             width={900}
             height={900}
