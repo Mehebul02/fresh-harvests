@@ -8,6 +8,8 @@ import textOffer from './images/specialOffer/Special Offer.png'
 import arrowSymble from './images/specialOffer/circle.png'
 import bg_mobile from './images/bg_mobile.png'
 import bg_women from './images/banner_women.png'
+import foodMan from './images/about/footMan.png'
+import mushroom from './images/about/Image2.png'
 
 
 export {logo,
@@ -18,5 +20,7 @@ export {logo,
     textOffer,
     arrowSymble,
     bg_mobile,
-    bg_women
+    bg_women,
+    foodMan,
+    mushroom
 }
