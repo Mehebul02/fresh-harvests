@@ -10,6 +10,9 @@ import bg_mobile from './images/bg_mobile.png'
 import bg_women from './images/banner_women.png'
 import foodMan from './images/about/footMan.png'
 import mushroom from './images/about/Image2.png'
+import specialAbout from './images/about/specialAbout.jpg'
+import foodImage from './images/about/food2.png'
+import foodImage_mobile from './images/about/food_Bg_moblie.jpg'
 
 
 export {logo,
@@ -22,5 +25,9 @@ export {logo,
     bg_mobile,
     bg_women,
     foodMan,
-    mushroom
+    mushroom,
+    specialAbout,
+    foodImage,
+    foodImage_mobile
+    
 }

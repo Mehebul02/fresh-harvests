@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { Button } from "../ui/button";
 import { foodMan, logo, mushroom } from "@/app/assets";
 import { motion } from "framer-motion";
 import TitleSection from "../shared/TitleSection";
+import CustomeButton from "../shared/CustomeButton";
 
 const AboutSection = () => {
   return (
@@ -49,28 +49,15 @@ const AboutSection = () => {
       </div>
 
       {/* Right Side - Text Section */}
-      <div className="w-full md:w-1/2 space-y-4  md:text-left px-2 sm:px-4">
+      <div className="w-full mx-auto md:w-1/2 space-y-4  md:text-left px-2 sm:px-4">
       <TitleSection className="" title=" About us" subtitle="  About Fresh Harvest" description="Welcome to Fresh Harvest, your premier destination for high-quality and fresh produce. 
           We are passionate about providing you with the finest fruits, vegetables, and salad 
           ingredients to nourish your body and delight your taste buds. With a commitment to 
           excellence, sustainability, and customer satisfaction, Fresh Harvest is here to 
           revolutionize your grocery shopping experience."/>
-        {/* <span className="text-xs sm:text-sm font-medium bg-green-100 text-green-700 px-3 py-1 rounded-md">
-          About us
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-          About Fresh Harvest
-        </h2>
-        <p className="text-gray-700 text-sm sm:text-lg leading-relaxed">
-          Welcome to Fresh Harvest, your premier destination for high-quality and fresh produce. 
-          We are passionate about providing you with the finest fruits, vegetables, and salad 
-          ingredients to nourish your body and delight your taste buds. With a commitment to 
-          excellence, sustainability, and customer satisfaction, Fresh Harvest is here to 
-          revolutionize your grocery shopping experience.
-        </p> */}
-        <Button className="text-[#FF6A1A] border border-[#FF6A1A] px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition duration-300">
-          Read More
-        </Button>
+  {/* button  */}
+        <CustomeButton className="md:ml-10" text="Read More"/>
+        
       </div>
     </section>
   );
