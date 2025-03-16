@@ -3,10 +3,14 @@ import Container from "@/components/shared/Container";
 
 const HomePage = () => {
   return (
-    <Container>
-      <h1 className="mt-64">asdfasfasdf</h1>
+    <div className="">
+    
       <BannerSection/>
-    </Container>
+
+      <div className="md:text-center mt-72">
+              <h1 className="text-[80px] text-center text-[#749B3F] font-medium bg-[#749B3F1A] p-3 rounded-xl inline-block ">Welcome to Fresh Harvest</h1>
+              </div>
+    </div>
   );
 };
 

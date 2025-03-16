@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-green-100 text-gray-800 py-8">
+    <footer className="bg-green-100 text-gray-800 py-8 mt-56">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 space-y-3 ">
           <div className=''>
@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
 
         <div className="flex justify-between items-center mt-8 text-center border-t-2 border-gray-300 pt-8">
-          <p>© Copyright 2024. All Rights Reserved by Banana Studio</p>
+          <p className='font-bold'>© Copyright 2024. All Rights Reserved by Banana Studio</p>
           <SocialLinks/>
         </div>
       </div>

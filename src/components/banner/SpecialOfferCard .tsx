@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const SpecialOfferCard = () => {
   return (
-    <div className="-mt-6 flex flex-col md:flex-row justify-between items-center bg-[#EBEBEB] rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto transform hover:scale-105 transition-transform duration-300">
+    <div className=" md:-mt-6 flex  md:flex-row md:justify-between items-center bg-[#EBEBEB] rounded-lg shadow-lg overflow-hidden max-w-4xl  mx-auto p-4 transform hover:scale-105 transition-transform duration-300">
       {/* Card Content */}
-      <div className="p-6 text-center md:text-left">
+      <div className="md:p-6 text-center md:text-left">
         {/* Special Offer Badge */}
         <div className="bg-green-600 text-white text-sm font-bold py-1 px-3 rounded-full inline-block mb-4">
           Special Offer
