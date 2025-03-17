@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -11,14 +10,23 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useForm } from 'react-hook-form';
 import { loginUser, registerUser } from '@/services/AuthServices';
 import { toast } from 'sonner';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, registrationSchema } from './validation';
+
 interface ILogin {
   login: string;
 }
 
 
-
+// Zod schema for form validation
+const registrationSchema = z.object({
+    fullName: z.string().min(1, "Full Name is required"),
+    email: z.string().email("Invalid email address").min(1, "Email is required"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+  });
+  
+  const loginSchema = z.object({
+    email: z.string().email("Invalid email address").min(1, "Email is required"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+  });
 const LoginForm = ({ login }: ILogin) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const form = useForm({

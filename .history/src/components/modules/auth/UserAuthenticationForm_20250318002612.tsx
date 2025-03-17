@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -11,19 +10,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useForm } from 'react-hook-form';
 import { loginUser, registerUser } from '@/services/AuthServices';
 import { toast } from 'sonner';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, registrationSchema } from './validation';
+
 interface ILogin {
   login: string;
 }
 
-
-
 const LoginForm = ({ login }: ILogin) => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const form = useForm({
-    resolver: zodResolver(isSignUp ? registrationSchema : loginSchema),
-  });
+  const form = useForm();
   const { formState: { isSubmitting } } = form;
 
   const onSubmit = async (data: any) => {

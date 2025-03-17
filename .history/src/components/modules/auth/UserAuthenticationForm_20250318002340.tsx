@@ -1,29 +1,36 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { loginUser, registerUser } from '@/services/AuthServices';
 import { toast } from 'sonner';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, registrationSchema } from './validation';
+import { registrationSchema } from './registerValidation';
+import { loginSchema } from './loginValidation';
+
 interface ILogin {
   login: string;
 }
 
-
-
 const LoginForm = ({ login }: ILogin) => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const form = useForm({
-    resolver: zodResolver(isSignUp ? registrationSchema : loginSchema),
-  });
+  const schema = useForm({ resolver: zodResolver(isSignUp ? registrationSchema : loginSchema)});
+  const form = useForm({ resolver: zodResolver(schema) });
+
+  const { formState: { isSubmitting } } = form;
+
+  // Update schema when isSignUp changes
+  useEffect(() => {
+    setSchema(isSignUp ? registrationSchema : loginSchema);
+    form.reset(); // Reset the form when schema changes
+  }, [isSignUp]);
+
   const { formState: { isSubmitting } } = form;
 
   const onSubmit = async (data: any) => {

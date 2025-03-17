@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -11,8 +10,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useForm } from 'react-hook-form';
 import { loginUser, registerUser } from '@/services/AuthServices';
 import { toast } from 'sonner';
+import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, registrationSchema } from './validation';
+import { registrationSchema } from './validation';
 interface ILogin {
   login: string;
 }

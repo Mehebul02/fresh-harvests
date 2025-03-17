@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { FcGoogle } from "react-icons/fc";
@@ -11,27 +10,34 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useForm } from 'react-hook-form';
 import { loginUser, registerUser } from '@/services/AuthServices';
 import { toast } from 'sonner';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, registrationSchema } from './validation';
+import { zodResolver } from '@hookform/resolvers/zod'; 
+import { registrationSchema } from './registerValidation';
+ // Make sure your schemas are correctly imported
+
 interface ILogin {
   login: string;
 }
 
-
-
 const LoginForm = ({ login }: ILogin) => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const form = useForm({
-    resolver: zodResolver(isSignUp ? registrationSchema : loginSchema),
-  });
+  const [schema, setSchema] = useState(isSignUp ? registrationSchema : loginSchema); // Set initial schema
+  
+  // Initialize the form with the dynamic schema
+  const form = useForm({ resolver: zodResolver(schema) });
+
   const { formState: { isSubmitting } } = form;
+
+  // Update schema when isSignUp changes
+  useEffect(() => {
+    setSchema(isSignUp ? registrationSchema : loginSchema);
+    form.reset(); // Reset the form when schema changes
+  }, [isSignUp]);
 
   const onSubmit = async (data: any) => {
     console.log(data);
     try {
       let res;
       if (isSignUp) {
-        // Handle registration
         res = await registerUser(data);
         if (res?.success) {
           toast.success(res?.message);
@@ -39,7 +45,6 @@ const LoginForm = ({ login }: ILogin) => {
           toast.error(res?.message);
         }
       } else {
-        // Handle login
         res = await loginUser(data);
         if (res?.success) {
           toast.success("Login Successful");
@@ -77,7 +82,7 @@ const LoginForm = ({ login }: ILogin) => {
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-
+              
               {/* If Sign Up Form, Show Name Field */}
               {isSignUp && (
                 <FormField
@@ -133,17 +138,12 @@ const LoginForm = ({ login }: ILogin) => {
                 </div>
               )}
 
-              {/* Submit Button - Show Loading When Submitting */}
               <Button
                 type="submit"
                 className={`w-full cursor-pointer ${isSubmitting ? 'bg-gray-400' : 'bg-[#FF6A1A] hover:bg-[#749B3F] hover:text-white'}`}
-                disabled={isSubmitting} // Disable the button during submission
+                disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  <span>Loading...</span>  // You can show a loader component here
-                ) : (
-                  isSignUp ? "Sign Up" : "Sign In"
-                )}
+                {isSubmitting ? <span>Loading...</span> : (isSignUp ? "Sign Up" : "Sign In")}
               </Button>
             </form>
           </Form>
