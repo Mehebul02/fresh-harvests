@@ -6,7 +6,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://api-fresh-harvest.code-commando.com/api/v1',
+    baseUrl: 'https://bike-store-eta-six.vercel.app/api/v1',
     // baseUrl: 'http://localhost:5000/api/v1',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
@@ -30,7 +30,7 @@ const baseQuery = fetchBaseQuery({
   
     if (result.error?.status === 401) {
       console.log('Sending refresh token request');
-      const res = await fetch('https://api-fresh-harvest.code-commando.com/api/v1', {
+      const res = await fetch('https://bike-store-eta-six.vercel.app/api/v1/auth/refresh-token', {
         method: 'POST',
         credentials: 'include'
       })

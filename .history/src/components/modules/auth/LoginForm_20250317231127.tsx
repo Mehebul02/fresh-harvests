@@ -8,7 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { useGetUsersQuery, useRegisterUserMutation } from '@/redux/features/auth/authApi';
+import { loginUser, registerUser } from '@/services/AuthServices';
+// import { useGetUsersQuery, useLoginMutation, useRegisterUserMutation } from '@/redux/features/auth/authApi';
 
 interface ILogin  {
   login:string
@@ -16,9 +17,10 @@ interface ILogin  {
 
 const LoginForm = ({ login }:ILogin) => {
     const [isSignUp, setIsSignUp] = useState(false); 
-    const {data:blogs, isLoading} = useGetUsersQuery({undefined});
-    console.log(blogs);
-    const [registerMutation, { isLoading: registerLoading, error: registerError }] = useRegisterUserMutation();
+    // const {data:blogs, isLoading} = useGetUsersQuery({undefined});
+    // console.log(blogs);
+    // const [registerMutation, { isLoading: registerLoading, error: registerError }] = useRegisterUserMutation();
+    // const [loginMutation, { isLoading: loginLoading, error: loginError }] = useLoginMutation();
 
     const form = useForm();
 
@@ -27,14 +29,14 @@ const LoginForm = ({ login }:ILogin) => {
         try {
             if (isSignUp) {
                 // Handle registration
-                const response = await registerMutation(data).unwrap();
+                const response = await registerUser(data)
                 console.log('Registration Successful:', response);
-                setIsSignUp(false); // Redirect to login after signup
+                setIsSignUp(false); 
             } else {
-                // Handle login
-                // const response = await loginMutation(data).unwrap();
+                
+                const  = await loginUser(data);
                 console.log('Login Successful:', response);
-                // Handle success (store token, redirect, etc.)
+                
             }
         } catch (err) {
             console.error('Error:', err);

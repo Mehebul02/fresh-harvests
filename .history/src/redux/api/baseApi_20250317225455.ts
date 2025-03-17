@@ -6,7 +6,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://api-fresh-harvest.code-commando.com/api/v1',
+    baseUrl: 'https://bike-store-eta-six.vercel.app/api/v1',
     // baseUrl: 'http://localhost:5000/api/v1',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {

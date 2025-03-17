@@ -1,3 +1,5 @@
+// import { baseApi } from "@/redux/api/baseApi"
+
 
 // const authApi =baseApi.injectEndpoints({
 //     endpoints: (builder)=>({
@@ -8,13 +10,13 @@
 //                 body:userInfo
 //             }),
 //         }),
-//         register:builder.mutation({
-//             query:(userInfo)=>({
-//                 url:'/users/register',
-//                 method:"POST",
-//                 body:userInfo
-//             })
-//         })
+        // register:builder.mutation({
+        //     query:(userInfo)=>({
+        //         url:'/users/register',
+        //         method:"POST",
+        //         body:userInfo
+        //     })
+        // })
         
 //     }),
 // })
@@ -49,28 +51,3 @@ export const baseApi = createApi({
 })
 
 export const { useGetUsersQuery,useRegisterUserMutation ,useLoginMutation} = baseApi
-
-
-// const authApi = baseApi.injectEndpoints({
-//   endpoints: (builder) => ({
-//     getUsers: builder.query({
-//       query: () => "/users",
-//     }),
-//     registerUser: builder.mutation({
-//       query: (userData) => ({
-//         url: "/users/register",
-//         method: "POST",
-//         body: userData,
-//       }),
-//     }),
-//     login: builder.mutation({
-//       query: (userData) => ({
-//         url: "/auth/login",
-//         method: "POST",
-//         body: userData,
-//       }),
-//     }),
-//   }),
-// });
-
-// export const { useGetUsersQuery, useRegisterUserMutation, useLoginMutation } = authApi;

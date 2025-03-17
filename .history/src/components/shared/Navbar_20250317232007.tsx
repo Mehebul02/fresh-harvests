@@ -5,7 +5,7 @@ import Link from "next/link";
 import { logo } from "@/app/assets";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
-import LoginForm from "../modules/auth/UserAuthenticationForm";
+import LoginForm from "../modules/auth/UserAuthentication";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

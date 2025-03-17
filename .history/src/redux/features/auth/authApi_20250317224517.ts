@@ -1,26 +1,26 @@
 
-// const authApi =baseApi.injectEndpoints({
-//     endpoints: (builder)=>({
-//         login:builder.mutation({
-//             query:(userInfo)=>({
-//                 url:'/auth/login',
-//                 method:'POST',
-//                 body:userInfo
-//             }),
-//         }),
-//         register:builder.mutation({
-//             query:(userInfo)=>({
-//                 url:'/users/register',
-//                 method:"POST",
-//                 body:userInfo
-//             })
-//         })
+const authApi =baseApi.injectEndpoints({
+    endpoints: (builder)=>({
+        login:builder.mutation({
+            query:(userInfo)=>({
+                url:'/auth/login',
+                method:'POST',
+                body:userInfo
+            }),
+        }),
+        register:builder.mutation({
+            query:(userInfo)=>({
+                url:'/users/register',
+                method:"POST",
+                body:userInfo
+            })
+        })
         
-//     }),
-// })
+    }),
+})
 
 
-// export const {useLoginMutation,useRegisterMutation} = authApi
+export const {useLoginMutation,useRegisterMutation} = authApi
 
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
