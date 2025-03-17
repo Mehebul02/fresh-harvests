@@ -123,32 +123,8 @@ const LoginForm = ({ login }: ILogin) => {
                 </FormItem>
               )}
             />
-<div className='flex justify-between items-center '>
- {/* Remember Me Checkbox */}
- {!isSignUp && (
-              <FormField
-                control={form.control}
-                name="rememberMe"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex  items-center gap-2">
-                        <input type="checkbox" id="rememberMe" {...field} className="h-4 w-4" />
-                        <Label htmlFor="rememberMe" className="text-sm">Remember me</Label>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
+<div>
 
-            {/* Remember Me & Forgot Password for Login */}
-            {!isSignUp && (
-              <div className="flex items-center justify-between">
-                <a href="#" className="text-sm underline">Forgot Password?</a>
-              </div>
-            )}
 </div>
            
 

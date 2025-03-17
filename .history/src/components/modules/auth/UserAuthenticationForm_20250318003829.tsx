@@ -123,7 +123,7 @@ const LoginForm = ({ login }: ILogin) => {
                 </FormItem>
               )}
             />
-<div className='flex justify-between items-center '>
+<div className='flex'>
  {/* Remember Me Checkbox */}
  {!isSignUp && (
               <FormField

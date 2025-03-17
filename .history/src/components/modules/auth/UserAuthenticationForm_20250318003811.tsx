@@ -123,9 +123,11 @@ const LoginForm = ({ login }: ILogin) => {
                 </FormItem>
               )}
             />
-<div className='flex justify-between items-center '>
- {/* Remember Me Checkbox */}
- {!isSignUp && (
+<div>
+    
+</div>
+            {/* Remember Me Checkbox */}
+            {!isSignUp && (
               <FormField
                 control={form.control}
                 name="rememberMe"
@@ -149,8 +151,6 @@ const LoginForm = ({ login }: ILogin) => {
                 <a href="#" className="text-sm underline">Forgot Password?</a>
               </div>
             )}
-</div>
-           
 
             {/* Submit Button - Show Loading When Submitting */}
             <Button
