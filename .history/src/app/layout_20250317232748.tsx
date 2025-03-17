@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {  Questrial,  } from "next/font/google";
 import "./globals.css";
 import Providers from "@/lib/providers/Providers";
-import { Toaster } from "sonner";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
