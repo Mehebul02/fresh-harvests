@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { useGetUsersQuery, useRegisterUserMutation } from '@/redux/features/auth/authApi';
 
 interface ILogin  {
   login:string
@@ -16,29 +15,11 @@ interface ILogin  {
 
 const LoginForm = ({ login }:ILogin) => {
     const [isSignUp, setIsSignUp] = useState(false); 
-    const {data:blogs, isLoading} = useGetUsersQuery({undefined});
-    console.log(blogs);
-    const [registerMutation, { isLoading: registerLoading, error: registerError }] = useRegisterUserMutation();
 
     const form = useForm();
 
-    const onSubmit = async(data: any) => {
+    const onSubmit = (data: any) => {
         console.log(data);
-        try {
-            if (isSignUp) {
-                // Handle registration
-                const response = await registerMutation(data).unwrap();
-                console.log('Registration Successful:', response);
-                setIsSignUp(false); // Redirect to login after signup
-            } else {
-                // Handle login
-                // const response = await loginMutation(data).unwrap();
-                console.log('Login Successful:', response);
-                // Handle success (store token, redirect, etc.)
-            }
-        } catch (err) {
-            console.error('Error:', err);
-        }
     };
 
     return (
@@ -62,7 +43,7 @@ const LoginForm = ({ login }:ILogin) => {
                             {isSignUp && (
                                 <FormField
                                     control={form.control}
-                                    name="fullName"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name</FormLabel>
@@ -103,6 +84,22 @@ const LoginForm = ({ login }:ILogin) => {
                                 )}
                             />
 
+                            {/* Confirm Password for Sign Up */}
+                            {/* {isSignUp && (
+                                <FormField
+                                    control={form.control}
+                                    name="confirmPassword"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Confirm Password</FormLabel>
+                                            <FormControl>
+                                                <Input type="password" placeholder="Confirm your password" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            )} */}
 
                             {/* Remember Me & Forgot Password for Login */}
                             {!isSignUp && (
@@ -141,7 +138,7 @@ const LoginForm = ({ login }:ILogin) => {
                         {isSignUp ? (
                             <>Already have an account? <span className="underline text-[#FF6A1A] cursor-pointer" onClick={() => setIsSignUp(false)}>Sign In</span></>
                         ) : (
-                            <>Don&apos;t have an account? <span className="underline text-[#FF6A1A] cursor-pointer" onClick={() => setIsSignUp(true)}>Sign Up</span></>
+                            <>Don't have an account? <span className="underline text-[#FF6A1A] cursor-pointer" onClick={() => setIsSignUp(true)}>Sign Up</span></>
                         )}
                     </p>
                 </DialogContent>

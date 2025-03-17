@@ -32,7 +32,7 @@ const LoginForm = ({ login }:ILogin) => {
                 setIsSignUp(false); // Redirect to login after signup
             } else {
                 // Handle login
-                // const response = await loginMutation(data).unwrap();
+                const response = await loginMutation(data).unwrap();
                 console.log('Login Successful:', response);
                 // Handle success (store token, redirect, etc.)
             }
@@ -62,7 +62,7 @@ const LoginForm = ({ login }:ILogin) => {
                             {isSignUp && (
                                 <FormField
                                     control={form.control}
-                                    name="fullName"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name</FormLabel>

@@ -24,21 +24,21 @@ const LoginForm = ({ login }:ILogin) => {
 
     const onSubmit = async(data: any) => {
         console.log(data);
-        try {
-            if (isSignUp) {
-                // Handle registration
-                const response = await registerMutation(data).unwrap();
-                console.log('Registration Successful:', response);
-                setIsSignUp(false); // Redirect to login after signup
-            } else {
-                // Handle login
-                // const response = await loginMutation(data).unwrap();
-                console.log('Login Successful:', response);
-                // Handle success (store token, redirect, etc.)
-            }
-        } catch (err) {
-            console.error('Error:', err);
-        }
+        // try {
+        //     if (isSignUp) {
+        //         // Handle registration
+        //         const response = await registerMutation(data).unwrap();
+        //         console.log('Registration Successful:', response);
+        //         setIsSignUp(false); // Redirect to login after signup
+        //     } else {
+        //         // Handle login
+        //         const response = await loginMutation(data).unwrap();
+        //         console.log('Login Successful:', response);
+        //         // Handle success (store token, redirect, etc.)
+        //     }
+        // } catch (err) {
+        //     console.error('Error:', err);
+        // }
     };
 
     return (
@@ -62,7 +62,7 @@ const LoginForm = ({ login }:ILogin) => {
                             {isSignUp && (
                                 <FormField
                                     control={form.control}
-                                    name="fullName"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name</FormLabel>

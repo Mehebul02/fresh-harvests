@@ -62,7 +62,7 @@ const LoginForm = ({ login }:ILogin) => {
                             {isSignUp && (
                                 <FormField
                                     control={form.control}
-                                    name="fullName"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name</FormLabel>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {  Questrial,  } from "next/font/google";
+import {  Questrial, Rubik } from "next/font/google";
 import "./globals.css";
 import Providers from "@/lib/providers/Providers";
 

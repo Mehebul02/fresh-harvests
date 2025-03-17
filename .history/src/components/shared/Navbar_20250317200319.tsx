@@ -121,7 +121,7 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          <LoginForm login="Sign In"/>
+          <Logi
         </div>
       </nav>
     </div>

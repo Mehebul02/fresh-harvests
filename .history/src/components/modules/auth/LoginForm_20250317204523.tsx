@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { useGetUsersQuery, useRegisterUserMutation } from '@/redux/features/auth/authApi';
+import { useLoginMutation, useRegisterMutation } from '@/redux/features/auth/authApi';
 
 interface ILogin  {
   login:string
@@ -16,14 +16,12 @@ interface ILogin  {
 
 const LoginForm = ({ login }:ILogin) => {
     const [isSignUp, setIsSignUp] = useState(false); 
-    const {data:blogs, isLoading} = useGetUsersQuery({undefined});
-    console.log(blogs);
-    const [registerMutation, { isLoading: registerLoading, error: registerError }] = useRegisterUserMutation();
+    const [loginMutation, { isLoading, error }] = useLoginMutation();
+    const [registerMutation, { isLoading: registerLoading, error: registerError }] = useRegisterMutation();
 
     const form = useForm();
 
     const onSubmit = async(data: any) => {
-        console.log(data);
         try {
             if (isSignUp) {
                 // Handle registration
@@ -32,7 +30,7 @@ const LoginForm = ({ login }:ILogin) => {
                 setIsSignUp(false); // Redirect to login after signup
             } else {
                 // Handle login
-                // const response = await loginMutation(data).unwrap();
+                const response = await loginMutation(data).unwrap();
                 console.log('Login Successful:', response);
                 // Handle success (store token, redirect, etc.)
             }
@@ -62,7 +60,7 @@ const LoginForm = ({ login }:ILogin) => {
                             {isSignUp && (
                                 <FormField
                                     control={form.control}
-                                    name="fullName"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name</FormLabel>

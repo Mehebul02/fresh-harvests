@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import {  Questrial,  } from "next/font/google";
+import {  Questrial, Rubik } from "next/font/google";
 import "./globals.css";
-import Providers from "@/lib/providers/Providers";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -34,13 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
-      <body
-        className={questrial.className}
-      >
-        {children}
-      </body>
-      </Providers>
+      <Provider
     </html>
   );
 }
