@@ -8,7 +8,6 @@ import { getCurrentUser } from "@/services/AuthServices";
 
 const HomePage = () => {
   const users = getCurrentUser()
-  console.log(users);
   return (
     <div className="">
 

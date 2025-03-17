@@ -8,7 +8,7 @@ import { getCurrentUser } from "@/services/AuthServices";
 
 const HomePage = () => {
   const users = getCurrentUser()
-  console.log(users);
+  console.log(u);
   return (
     <div className="">
 

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
-'use server'
-import { jwtDecode } from "jwt-decode";
+'use client'
+
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 
@@ -38,27 +37,13 @@ export const registerUser = async (userInfo: FieldValues) => {
       });
   
       const result = await res.json()
-      const storeCookies = await cookies()
-      if (result.success) {
-        storeCookies.set("accessToken", result.data.accessToken)
-      }
+    //   const storeCookies = await cookies()
+    //   if (result.success) {
+    //     storeCookies.set("accessToken", result.data.accessToken)
+    //   }
       return result
     }
     catch (err: any) {
       return Error(err)
-    }
-  }
-
-
-  export const getCurrentUser = async () => {
-    const accessToken = (await cookies()).get("accessToken")?.value
-    let decodeData = null
-  
-    if (accessToken) {
-      decodeData = await jwtDecode(accessToken)
-      return decodeData
-    }
-    else {
-      return null
     }
   }
