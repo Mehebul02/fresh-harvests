@@ -1,10 +1,9 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import Container from "./Container";
-import { twMerge } from "tailwind-merge";
 
-export function SkeletonCard({className}:{className?:string}) {
+export function SkeletonCard() {
   return (
-    <Container className={twMerge("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4", className)}>
+    <Container className={twMerge("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4", className)} className="">
       {Array.from({ length: 8 }).map((_, index) => (
         <div key={index} className="flex flex-col space-y-3">
           <Skeleton className="h-[125px] w-[250px] rounded-xl bg-gray-300" />

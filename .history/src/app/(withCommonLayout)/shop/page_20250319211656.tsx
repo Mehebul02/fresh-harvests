@@ -20,7 +20,7 @@ const ShopPage = () => {
       
            <ShopBanner/>
         <Container>
-            <h1 className='mt-8 text-3xl text-[#FF6A1A] font-bold'>Feature Products</h1>
+            <h1 className='mt-4 text-yellow-700'>Feature Products</h1>
            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-[2940px] mx-auto">
            {
             productsData?.data?.map((product:IProduct)=>(<ProductCard key={product.id} product={product}/>))
