@@ -31,7 +31,6 @@ export {logo,
     specialAbout,
     foodImage,
     foodImage_mobile,
-    testimonial_image,
-    notFound
+    testimonial_image
     
 }

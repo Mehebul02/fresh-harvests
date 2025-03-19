@@ -7,8 +7,11 @@ import HomeProducts from "@/components/products/HomeProducts";
 import Testimonial from "@/components/testimonial/Testimonial";
 
 const HomePage = () => {
+
+  // console.log("user current",users);
   return (
     <div className="">
+
       <BannerSection />
       <HomeProducts />
       <AboutSection />

@@ -7,7 +7,6 @@ import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
 import LoginForm from "../modules/auth/UserAuthenticationForm";
 import ProfilePopup from "../modules/auth/Profile";
-import { usePathname } from "next/navigation";
 type USerProps = {
   user?:{
     name?:string | null | undefined,
@@ -56,23 +55,17 @@ const Navbar = ({session}:{session:USerProps}) => {
 
           {/* Center: Menu Items */}
           <div className="hidden md:flex gap-8 text-[#4A4A52] absolute left-1/2 transform -translate-x-1/2">
-  {menuItems.map((item) => (
-    <Link
-      key={item.path}
-      href={item.path}
-      className={`text-[14px] relative group ${
-        pathName === item.path ? "text-green-500 font-bold" : "text-[#4A4A52]"
-      }`}
-    >
-      {item.name}
-      <span
-        className={`absolute bottom-0 left-0 w-full h-0.5 transition-all ${
-          pathName === item.path ? "bg-green-500" : "bg-transparent group-hover:bg-green-400"
-        }`}
-      ></span>
-    </Link>
-  ))}
-</div>
+            {menuItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className="text-[14px] relative group"
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-transparent group-hover:bg-green-400 transition-all"></span>
+              </Link>
+            ))}
+          </div>
 
           {/* Right Side: Favorites, Cart, Sign In */}
           <div className={`hidden md:flex items-center gap-6 ${isScrolled ? "text-black" : "text-white"}`}>

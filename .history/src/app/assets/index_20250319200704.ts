@@ -14,7 +14,7 @@ import specialAbout from './images/about/specialAbout.jpg'
 import foodImage from './images/about/food2.png'
 import foodImage_mobile from './images/about/food_Bg_moblie.jpg'
 import testimonial_image from './images/testimolias.png'
-import notFound from './images/notFound (1).webp'
+import  from './images/notFound (1).webp'
 
 
 export {logo,
@@ -31,7 +31,6 @@ export {logo,
     specialAbout,
     foodImage,
     foodImage_mobile,
-    testimonial_image,
-    notFound
+    testimonial_image
     
 }

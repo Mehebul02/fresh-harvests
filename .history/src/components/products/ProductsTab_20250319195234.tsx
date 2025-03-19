@@ -4,8 +4,6 @@ import { ICategory, IProduct } from "@/types";
 import Image from "next/image";
 import { useState } from "react";
 import { SkeletonCard } from "../shared/CardSkeleton";
-import CustomeButton from "../shared/CustomeButton";
-import Link from "next/link";
 
 const ProductsTab = () => {
   const [activeTab, setActiveTab] = useState<string>("All");
@@ -84,14 +82,9 @@ const ProductsTab = () => {
             </div>
           ))
         ) : (
-          <p className="w-full mx-auto text-gray-500 text-center md:ml-96 mt-7">No products found in this category.</p>
+          <p className="w-full mx-auto text-gray-500 text-center ml-8">No products found in this category.</p>
         )}
       </div>
-        <Link href='/shop'>
-        <div  className="text-center">
-        <CustomeButton className="text-center mt-10  mx-auto" text="See Al Products"/>
-        </div>
-        </Link>
     </div>
   );
 };

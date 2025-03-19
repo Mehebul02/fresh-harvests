@@ -87,10 +87,8 @@ const ProductsTab = () => {
           <p className="w-full mx-auto text-gray-500 text-center md:ml-96 mt-7">No products found in this category.</p>
         )}
       </div>
-        <Link href='/shop'>
-        <div  className="text-center">
-        <CustomeButton className="text-center mt-10  mx-auto" text="See Al Products"/>
-        </div>
+        <Link>
+        
         </Link>
     </div>
   );
