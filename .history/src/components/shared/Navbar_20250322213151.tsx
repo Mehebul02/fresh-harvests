@@ -19,8 +19,8 @@ type USerProps = {
   expires: string;
 };
 
-const Navbar = ({session}:{session:USerProps} ) => {
-  
+const Navbar =as ({session}:{session:USerProps}) => {
+  const session = await getServerSession(authOptions)
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 

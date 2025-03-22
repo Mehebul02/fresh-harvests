@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client'
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -9,10 +10,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
+import Image from "next/image";
 import { useAddProductMutation, useGetCategoryQuery } from "@/redux/features/product/productApi";
 import { productSchema } from "@/components/products/ProductValidation";
-import { toast } from "sonner"; 
-import Image from "next/image";
+import { toast } from "sonner";
+ // Success/Error Toast দেখানোর জন্য
 
 type ProductFormData = z.infer<typeof productSchema>;
 
@@ -22,7 +24,7 @@ const AddProductPage = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-    reset,
+    reset, // Reset function added
   } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
     defaultValues: {
@@ -35,52 +37,33 @@ const AddProductPage = () => {
     },
   });
 
-  const [imageFiles, setImageFiles] = useState<File[]>([]); 
-  const [addProduct, { isLoading }] = useAddProductMutation(); 
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [addProduct, { isLoading }] = useAddProductMutation(); // API call with Redux mutation
 
-  const { data: categoryOptions, error } = useGetCategoryQuery(undefined); 
+  const { data: categoryOptions } = useGetCategoryQuery(undefined);
 
   const onSubmit = async (data: ProductFormData) => {
     try {
-      const formData = new FormData();
-      formData.append("productName", data.productName);
-      formData.append("description", data.description);
-      formData.append("price", data.price);
-      formData.append("stock", data.stock.toString());
-      formData.append("categoryId", data.categoryId);
-
-      // Append images to FormData
-      imageFiles.forEach((file) => formData.append("images", file));
-
-      console.log("FormData before API call:", formData); 
-
-      // API Call
-      const response = await addProduct(formData).unwrap();
+      const response = await addProduct(data).unwrap(); // API Call
       console.log("Product Added Successfully:", response);
       toast.success("Product added successfully!");
 
-      
+      // Reset form after successful submission
       reset();
-      setImageFiles([]); 
+      setImageUrls([]);
     } catch (error) {
       console.error("Error adding product:", error);
       toast.error("Failed to add product!");
     }
   };
 
-  // Handle file input change
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const files = Array.from(e.target.files);
-      setImageFiles((prevFiles) => [...prevFiles, ...files]); 
-      setValue("images", files.map((file) => URL.createObjectURL(file))); 
+  const handleImageAdd = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const url = e.target.value;
+    if (url) {
+      setImageUrls([...imageUrls, url]);
+      setValue("images", [...imageUrls, url]);
     }
   };
-
-  
-  if (error) {
-    return <p>Error fetching categories!</p>;
-  }
 
   return (
     <div>
@@ -118,27 +101,14 @@ const AddProductPage = () => {
         {/* Images */}
         <div className="mb-4">
           <Label className="mb-2">Product Images</Label>
-          <Input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={handleImageUpload}
-          />
+          <Input type="url" placeholder="Enter image URL" onChange={handleImageAdd} />
           <div className="mt-2">
-            {imageFiles.length > 0 && (
-              <div className="flex flex-wrap space-x-4">
-                {imageFiles.map((file, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Image
-                      src={URL.createObjectURL(file)}
-                      alt="Product"
-                      className="w-16 h-16 object-cover rounded" width={100} height={100}
-                    />
-                    <span className="text-sm">{file.name}</span>
-                  </div>
-                ))}
+            {imageUrls.map((url, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <Image src={url} alt="Product" className="w-16 h-16 object-cover rounded" width={64} height={64} />
+                <span className="text-sm">{url}</span>
               </div>
-            )}
+            ))}
           </div>
           {errors.images && <p className="text-red-500 text-sm">{errors.images.message}</p>}
         </div>
@@ -162,7 +132,7 @@ const AddProductPage = () => {
         </div>
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full mt-4 cursor-pointer bg-[#749B3F] hover:bg-[#FF6A1A]" disabled={isLoading}>
+        <Button  type="submit" className="w-full mt-4 cursor-pointer" disabled={isLoading}>
           {isLoading ? "Adding..." : "Add Product"}
         </Button>
       </form>

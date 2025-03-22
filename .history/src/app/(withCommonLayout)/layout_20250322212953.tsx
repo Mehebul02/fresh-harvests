@@ -6,11 +6,11 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 
 const CommonLayout =async ({children}:{children:React.ReactNode}) => {
-    const session = await getServerSession(authOptions) || null
+    const session = await getServerSession(authOptions)
     return (
         <body>
-      
-        <Navbar session={session} /> 
+      {
+        <Navbar session={session }  />}
       
          
            <main className='min-h-screen'> {children}</main>

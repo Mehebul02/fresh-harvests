@@ -10,6 +10,7 @@ import LoginForm from "../modules/auth/UserAuthenticationForm";
 import ProfilePopup from "../modules/auth/Profile";
 import { usePathname } from "next/navigation";
 import {  useSelector } from "react-redux";
+import { getServerSession } from "next-auth";
 type USerProps = {
   user?: {
     name?: string | null | undefined;
@@ -19,8 +20,8 @@ type USerProps = {
   expires: string;
 };
 
-const Navbar = ({session}:{session:USerProps} ) => {
-  
+const Navbar =async ({session}:{session:USerProps}) => {
+  const session = await getServerSession(authOptions)
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 

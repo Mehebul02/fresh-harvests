@@ -16,11 +16,10 @@ type USerProps = {
     email?: string | null | undefined;
     image?: string | null | undefined;
   };
-  expires: string;
+  expires?: string;
 };
 
-const Navbar = ({session}:{session:USerProps} ) => {
-  
+const Navbar = ({session}:{session:USerProps}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -113,7 +112,7 @@ const Navbar = ({session}:{session:USerProps} ) => {
   Sign In
 </button> */}
 {
-  session?.user?  <ProfilePopup session={session} />:<LoginForm login='Sign In'/>
+  session?.user?  <ProfilePopup session={session}/>:<LoginForm login='Sign In'/>
 }
 
             

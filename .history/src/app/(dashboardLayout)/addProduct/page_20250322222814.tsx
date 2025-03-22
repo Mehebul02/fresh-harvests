@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-'use client'
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { useAddProductMutation, useGetCategoryQuery } from "@/redux/features/product/productApi";
 import { productSchema } from "@/components/products/ProductValidation";
-import { toast } from "sonner"; 
+import { toast } from "sonner"; // Success/Error Toast
 import Image from "next/image";
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -35,10 +35,10 @@ const AddProductPage = () => {
     },
   });
 
-  const [imageFiles, setImageFiles] = useState<File[]>([]); 
-  const [addProduct, { isLoading }] = useAddProductMutation(); 
+  const [imageFiles, setImageFiles] = useState<File[]>([]); // State for holding the uploaded image files
+  const [addProduct, { isLoading }] = useAddProductMutation(); // API call with Redux mutation
 
-  const { data: categoryOptions, error } = useGetCategoryQuery(undefined); 
+  const { data: categoryOptions, error } = useGetCategoryQuery(undefined); // Fetch categories
 
   const onSubmit = async (data: ProductFormData) => {
     try {
@@ -52,16 +52,13 @@ const AddProductPage = () => {
       // Append images to FormData
       imageFiles.forEach((file) => formData.append("images", file));
 
-      console.log("FormData before API call:", formData); 
-
-      // API Call
-      const response = await addProduct(formData).unwrap();
+      const response = await addProduct(formData).unwrap(); // API Call
       console.log("Product Added Successfully:", response);
       toast.success("Product added successfully!");
 
-      
+      // Reset form after successful submission
       reset();
-      setImageFiles([]); 
+      setImageFiles([]); // Clear image files state
     } catch (error) {
       console.error("Error adding product:", error);
       toast.error("Failed to add product!");
@@ -72,12 +69,12 @@ const AddProductPage = () => {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
-      setImageFiles((prevFiles) => [...prevFiles, ...files]); 
-      setValue("images", files.map((file) => URL.createObjectURL(file))); 
+      setImageFiles(files); // Update the state with selected files
+      setValue("images", files); // Sync files with react-hook-form
     }
   };
 
-  
+  // Loading or error handling for categories
   if (error) {
     return <p>Error fetching categories!</p>;
   }
@@ -132,7 +129,7 @@ const AddProductPage = () => {
                     <Image
                       src={URL.createObjectURL(file)}
                       alt="Product"
-                      className="w-16 h-16 object-cover rounded" width={100} height={100}
+                      className="w-16 h-16 object-cover rounded" width={}
                     />
                     <span className="text-sm">{file.name}</span>
                   </div>

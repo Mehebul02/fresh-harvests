@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { useAddProductMutation, useGetCategoryQuery } from "@/redux/features/product/productApi";
 import { productSchema } from "@/components/products/ProductValidation";
-import { toast } from "sonner"; 
+import { toast } from "sonner"; // Success/Error Toast
 import Image from "next/image";
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -73,11 +72,11 @@ const AddProductPage = () => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
       setImageFiles((prevFiles) => [...prevFiles, ...files]); 
-      setValue("images", files.map((file) => URL.createObjectURL(file))); 
+      setValue("images", files.map((file) => URL.createObjectURL(file))); // Sync files with react-hook-form
     }
   };
 
-  
+  // Loading or error handling for categories
   if (error) {
     return <p>Error fetching categories!</p>;
   }

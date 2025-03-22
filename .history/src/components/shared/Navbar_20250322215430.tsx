@@ -19,7 +19,7 @@ type USerProps = {
   expires: string;
 };
 
-const Navbar = ({session}:{session:USerProps} ) => {
+const Navbar = ({session}:{session:USerProps} |) => {
   
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

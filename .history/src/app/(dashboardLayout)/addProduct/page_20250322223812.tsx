@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { useAddProductMutation, useGetCategoryQuery } from "@/redux/features/product/productApi";
 import { productSchema } from "@/components/products/ProductValidation";
-import { toast } from "sonner"; 
+import { toast } from "sonner"; // Success/Error Toast
 import Image from "next/image";
 
 type ProductFormData = z.infer<typeof productSchema>;

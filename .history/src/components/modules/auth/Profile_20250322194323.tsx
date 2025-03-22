@@ -34,8 +34,8 @@ const ProfilePopup = ({ session }: { session: Session }) => {
         <p className="px-4 text-sm text-gray-500">{session?.user?.email || "No email"}</p>
         <DropdownMenuSeparator />
      <Link href='/dashboard'>
-     <DropdownMenuItem className="cursor-pointer">
-          Dashboard
+     <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
+          
         </DropdownMenuItem>
      </Link>
         <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>

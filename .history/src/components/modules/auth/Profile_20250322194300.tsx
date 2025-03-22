@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "next-auth/react";
 import { Session } from "next-auth";
-import Link from "next/link";
 
 const ProfilePopup = ({ session }: { session: Session }) => {
   console.log("Session Data:", session); 
@@ -33,11 +32,7 @@ const ProfilePopup = ({ session }: { session: Session }) => {
         <DropdownMenuLabel>{session?.user?.name || "Guest"}</DropdownMenuLabel>
         <p className="px-4 text-sm text-gray-500">{session?.user?.email || "No email"}</p>
         <DropdownMenuSeparator />
-     <Link href='/dashboard'>
-     <DropdownMenuItem className="cursor-pointer">
-          Dashboard
-        </DropdownMenuItem>
-     </Link>
+     <Lin
         <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
           Logout
         </DropdownMenuItem>
