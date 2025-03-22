@@ -89,7 +89,7 @@ export const loginUser = async (userData: FieldValues) => {
 
 
   export const getCurrentUser = async () => {
-    const accessToken = (await cookies()).get("accessToken")?.value;
+    const accessToken = (await cookies()).get("accessToken")!.value;
     console.log("AccessToken", accessToken);
     let decodedData = null;
   
@@ -116,7 +116,7 @@ export const loginUser = async (userData: FieldValues) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: (await cookies()).get("refreshToken")!.value,
+              Authorization: (await cookies()).get("refreshToken")?.value,
             },
           }
         );

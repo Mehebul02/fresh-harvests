@@ -1,0 +1,139 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
+import Image from "next/image";
+import { useGetCategoryQuery } from "@/redux/features/product/productApi";
+
+
+
+type ProductFormData = z.infer<typeof productSchema>;
+
+
+
+
+
+
+
+
+const AddProductPage = () => {
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        formState: { errors },
+      } = useForm<ProductFormData>({
+        resolver: zodResolver(productSchema),
+        defaultValues: {
+          productName: "",
+          description: "",
+          price: "",
+          stock: 1,
+          images: [],
+          categoryId: "",
+        },
+      });
+    
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+
+    const onSubmit = (data: ProductFormData) => {
+        console.log("Submitted Data:", data);
+        // Add API call logic here
+      };
+    
+      const handleImageAdd = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const url = e.target.value;
+        if (url) {
+          setImageUrls([...imageUrls, url]);
+          setValue("images", [...imageUrls, url]);
+        }
+      };
+
+      const { data: categoryOptions, isLoading } = useGetCategoryQuery(undefined);
+console.log(categoryOptions);
+
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Add Product</h2>
+
+      {/* Product Name */}
+      <div className="mb-4">
+        <Label htmlFor="productName">Product Name</Label>
+        <Input id="productName" {...register("productName")} placeholder="Enter product name" />
+        {errors.productName && <p className="text-red-500 text-sm">{errors.productName.message}</p>}
+      </div>
+
+      {/* Description */}
+      <div className="mb-4">
+        <Label htmlFor="description">Description</Label>
+        <Textarea id="description" {...register("description")} placeholder="Enter product description" />
+        {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
+      </div>
+
+      {/* Price */}
+      <div className="mb-4">
+        <Label htmlFor="price">Price ($)</Label>
+        <Input id="price" {...register("price")} placeholder="Enter product price" />
+        {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
+      </div>
+
+      {/* Stock */}
+      <div className="mb-4">
+        <Label htmlFor="stock">Stock Quantity</Label>
+        <Input id="stock" type="number" {...register("stock", { valueAsNumber: true })} />
+        {errors.stock && <p className="text-red-500 text-sm">{errors.stock.message}</p>}
+      </div>
+
+      {/* Images */}
+      <div className="mb-4">
+        <Label>Product Images</Label>
+        <Input type="url" placeholder="Enter image URL" onChange={handleImageAdd} />
+        <div className="mt-2">
+          {imageUrls.map((url, index) => (
+            <div key={index} className="flex items-center space-x-2">
+              <Image src={url} alt="Product" className="w-16 h-16 object-cover rounded"  />
+              <span className="text-sm">{url}</span>
+            </div>
+          ))}
+        </div>
+        {errors.images && <p className="text-red-500 text-sm">{errors.images.message}</p>}
+      </div>
+
+      {/* Category */}
+      <div className="mb-4">
+        <Label>Category</Label>
+        <Select onValueChange={(value) => setValue("categoryId", value)}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a category" />
+          </SelectTrigger>
+          <SelectContent>
+            {
+                categoryOptions?.data?.map((category:any)=>(
+                    <SelectItem key={category.id} value={category.id}>{category.categoryName}</SelectItem>
+
+                ))
+            }
+           
+          </SelectContent>
+        </Select>
+        {errors.categoryId && <p className="text-red-500 text-sm">{errors.categoryId.message}</p>}
+      </div>
+
+      {/* Submit Button */}
+      <Button type="submit" className="w-full mt-4">Add Product</Button>
+    </form>
+        </div>
+    );
+};
+
+export default AddProductPage;

@@ -18,7 +18,7 @@ const ShopPage = () => {
            <ShopBanner/>
         <Container>
             <h1 className='mt-8 text-3xl text-[#FF6A1A] font-bold'>Feature Products</h1>
-         <ShopsItem/>
+         <ShopPage/>
         </Container>
         </>
     );

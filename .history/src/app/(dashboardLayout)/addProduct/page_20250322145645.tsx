@@ -13,8 +13,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useAddProductMutation, useGetCategoryQuery } from "@/redux/features/product/productApi";
 import { productSchema } from "@/components/products/ProductValidation";
-import { toast } from "sonner";
- // Success/Error Toast দেখানোর জন্য
+import { toast } from "react-hot-toast"; // Success/Error Toast দেখানোর জন্য
 
 type ProductFormData = z.infer<typeof productSchema>;
 
