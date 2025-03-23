@@ -17,7 +17,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   const persistor = persistStore(storeRef.current); 
 
   useEffect(() => {
-    persistor.purge(); 
+    persistor.purge(); // ✅ Purge পুরাতন Redux persist data
     setHydrated(true);
   }, [persistor]);
 

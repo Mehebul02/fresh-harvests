@@ -140,7 +140,9 @@ const totalFavorites = favorites.length;
             {token || session?.user ? (
               <div className="cursor-pointer" >
                 <ProfilePopup session={session}  handleLogout={handleLogout} />
-               
+                {/* <button className="text-black ml-4" onClick={handleLogout}>
+                  Logout
+                </button> */}
               </div>
             ) : (
               <LoginForm login="Sign In" />

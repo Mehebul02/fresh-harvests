@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "@/types"; 
+import { IProduct } from "@/types"; // Ensure you have a product type
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; 
 

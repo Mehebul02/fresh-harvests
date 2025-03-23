@@ -107,7 +107,7 @@ const totalFavorites = favorites.length;
 
           {/* Right Side: Favorites, Cart, Sign In */}
           <div className={`hidden md:flex items-center gap-6 ${isScrolled ? "text-black" : "text-white"}`}>
-           
+            {/* Favorites */}
           {/* Favorites */} 
 <div className="flex items-center gap-2">
   <Link href="/favorites" className="relative flex items-center gap-1 hover:text-gray-400">
@@ -140,7 +140,9 @@ const totalFavorites = favorites.length;
             {token || session?.user ? (
               <div className="cursor-pointer" >
                 <ProfilePopup session={session}  handleLogout={handleLogout} />
-               
+                {/* <button className="text-black ml-4" onClick={handleLogout}>
+                  Logout
+                </button> */}
               </div>
             ) : (
               <LoginForm login="Sign In" />

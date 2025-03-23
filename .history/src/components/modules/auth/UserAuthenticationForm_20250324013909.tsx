@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 import { signIn } from "next-auth/react";
 import { useLoginUserMutation, useRegisterUserMutation } from '@/redux/features/auth/authApi';
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/redux/features/auth/authSlice'; 
+import { setUser } from '@/redux/features/auth/authSlice'; // Import setUser action
 
 interface ILogin {
   login: string;
@@ -29,7 +29,7 @@ const LoginForm = ({ login }: ILogin) => {
   const router = useRouter();
   const [registerUser] = useRegisterUserMutation();
   const [loginUser] = useLoginUserMutation();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch(); // Initialize dispatch
 
 
   const onSubmit = async (data: any) => {

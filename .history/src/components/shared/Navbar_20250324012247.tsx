@@ -36,6 +36,7 @@ console.log(data);
 
   const dispatch = useDispatch();
   
+  // To handle logout functionality
   const handleLogout = () => {
     dispatch(logout());
     persistor.purge();
@@ -68,9 +69,6 @@ console.log(data);
     { name: "Blog", path: "/blog" },
   ];
   const pathName = usePathname();
-
-  const favorites = useSelector((state: any) => state.cart.favorites);
-const totalFavorites = favorites.length; 
 
   return (
     <div className="max-w-7xl">
@@ -106,22 +104,18 @@ const totalFavorites = favorites.length;
           </div>
 
           {/* Right Side: Favorites, Cart, Sign In */}
-          <div className={`hidden md:flex items-center gap-6 ${isScrolled ? "text-black" : "text-white"}`}>
-           
-          {/* Favorites */} 
-<div className="flex items-center gap-2">
-  <Link href="/favorites" className="relative flex items-center gap-1 hover:text-gray-400">
-    <span className="text-xl text-black">
-      <FaHeart />
-    </span>
-    {totalFavorites > 0 && ( 
-      <span className="absolute -top-3 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex justify-center items-center rounded-full">
-        {totalFavorites}
-      </span>
-    )}
-  </Link>
-  <h1 className="text-black">Favorites</h1>
-</div>
+         
+            <div className="flex items-center gap-2">
+              <Link href="/#" className="relative flex items-center gap-1 hover:text-gray-400">
+                <span className="text-xl text-black">
+                  <FaShoppingCart />
+                </span>
+                <span className="absolute -top-3 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex justify-center items-center rounded-full">
+                  {totalQuantity}
+                </span>
+              </Link>
+              <h1 className="text-black">Favorites</h1>
+            </div>
 
             {/* Cart */}
             <div className="flex items-center gap-2">
@@ -140,7 +134,9 @@ const totalFavorites = favorites.length;
             {token || session?.user ? (
               <div className="cursor-pointer" >
                 <ProfilePopup session={session}  handleLogout={handleLogout} />
-               
+                {/* <button className="text-black ml-4" onClick={handleLogout}>
+                  Logout
+                </button> */}
               </div>
             ) : (
               <LoginForm login="Sign In" />

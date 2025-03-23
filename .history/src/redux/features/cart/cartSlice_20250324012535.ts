@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "@/types"; 
+import { IProduct } from "@/types"; // Ensure you have a product type
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
+import storage from "redux-persist/lib/storage"; // Local storage
 
 interface CartItem extends IProduct {
   quantity: number;
@@ -9,7 +9,7 @@ interface CartItem extends IProduct {
 
 interface CartState {
   cartItems: CartItem[];
-  favorites: IProduct[];
+  favorites: IProduct[]; // Added favorites array
 }
 
 const initialState: CartState = {

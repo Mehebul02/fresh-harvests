@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "@/types"; 
+import { IProduct } from "@/types"; // Ensure you have a product type
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
+import storage from "redux-persist/lib/storage"; // Local storage
 
 interface CartItem extends IProduct {
   quantity: number;

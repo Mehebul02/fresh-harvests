@@ -50,7 +50,7 @@ const ProductDetailsPage = () => {
     if (isFavorite) {
       dispatch(removeFromFavorites(product?.data?.id));
     } else {
-      const favoriteItem:any = {
+      const favoriteItem = {
         id: product?.data?.id,
         productName: product?.data?.productName,
         price: product?.data?.price,

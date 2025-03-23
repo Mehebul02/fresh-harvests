@@ -12,20 +12,18 @@ import Spinner from "@/components/shared/loading";
 import CustomeButton from "@/components/shared/CustomeButton";
 import TitleSection from "@/components/shared/TitleSection";
 import RelateProduct from "@/components/products/RelateProduct";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/features/cart/cartSlice";
-import { addToFavorites, removeFromFavorites } from "@/redux/features/cart/cartSlice";
 import { ICart } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorites, removeFromFavorites } from "@/redux/features/cart/cartSlice";
 
 const ProductDetailsPage = () => {
   const { productId, categoryId } = useParams();
   const { data: product, isLoading } = useGetSingleProductQuery(productId);
   const { data: category, isLoading: isLoadingCategories } = useGetCategoryQuery(categoryId);
   const dispatch = useDispatch();
-  
-  const favorites = useSelector((state: any) => state.cart.favorites);
-  const isFavorite = favorites.some((item: any) => item.id === product?.data?.id);
-  
+  console.log(dispatch);
   const [quantity, setQuantity] = useState(1);
 
   if (isLoading || isLoadingCategories) {
@@ -36,7 +34,7 @@ const ProductDetailsPage = () => {
   )?.name || "Uncategorized";
 
   const handleAddToCart = () => {
-    const cartItem: any = {
+    const cartItem:any  = {
       id: product?.data?.id,
       productName: product?.data?.productName,
       price: product?.data?.price,
@@ -45,12 +43,16 @@ const ProductDetailsPage = () => {
     };
     dispatch(addToCart(cartItem));
   };
-
+  
+  const favorites = useSelector((state: any) => state.cart.favorites);
+  const isFavorite = favorites.some((item: any) => item.id === product?.data?.id);
+  const dispatch = useDispatch();
+  
   const handleToggleFavorite = () => {
     if (isFavorite) {
       dispatch(removeFromFavorites(product?.data?.id));
     } else {
-      const favoriteItem:any = {
+      const favoriteItem = {
         id: product?.data?.id,
         productName: product?.data?.productName,
         price: product?.data?.price,
@@ -59,7 +61,6 @@ const ProductDetailsPage = () => {
       dispatch(addToFavorites(favoriteItem));
     }
   };
-
   return (
     <Container className="py-10 mt-36">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -80,7 +81,7 @@ const ProductDetailsPage = () => {
               {Array.from({ length: 5 }).map((_, index) => (
                 <IoMdStar
                   key={index}
-                  className={`${
+                  className={`$ {
                     index + 1 <= Math.floor(product?.data?.rating) ? "text-[#fa8900]" : "text-gray-600"
                   }`}
                 />
@@ -99,14 +100,9 @@ const ProductDetailsPage = () => {
             <button onClick={() => setQuantity((prev) => prev + 1)} className="bg-gray-200 px-3 py-1 rounded">+</button>
           </div>
           <div className="flex items-center gap-4">
-            <button
-              onClick={handleToggleFavorite}
-              className={`flex justify-center items-center gap-2 cursor-pointer p-3 uppercase rounded-md duration-200 ${
-                isFavorite ? "bg-[#fa8900] text-white" : "bg-[#F4F6F6] text-black hover:bg-[#f57c00] hover:text-white"
-              }`}
-            >
-              <MdFavorite className={isFavorite ? "text-white" : "text-black"} />
-              <span>{isFavorite ? "Remove from favorite" : "Save as favorite"}</span>
+            <button className="flex justify-center items-center gap-2 cursor-pointer bg-[#F4F6F6] text-black p-3 uppercase rounded-md hover:bg-[#f57c00] hover:text-white duration-200">
+              <MdFavorite/>
+              <span>Save as favorite</span>
             </button>
             <button onClick={handleAddToCart} className="flex justify-center items-center gap-2 bg-[#fa8900] cursor-pointer text-white p-3 uppercase rounded-md hover:bg-[#f57c00] duration-200">
               <FaCartPlus/>
