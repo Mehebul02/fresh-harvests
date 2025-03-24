@@ -12,7 +12,9 @@ interface CartProps{
 const Cart = ({ isCartOpen, setIsCartOpen }:CartProps) => {
     const dispatch = useDispatch();
       const { cartItems } = useSelector((state: any) => state.cart); 
-     
+      const { auth } = useSelector((state: any) => state.cart); 
+    
+      console.log("Item ase", cartItems);
     
       // Handle quantity change
     //   const handleQuantityChange = (id: string, quantity: number) => {

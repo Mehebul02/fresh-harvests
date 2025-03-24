@@ -6,13 +6,11 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api-fresh-harvest.code-commando.com/api/v1",
     prepareHeaders: (headers, { getState }) => {
-      // const token = (getState() as RootState).auth.token?.replace(/['"]+/g, '');
-      const token = (getState() as RootState).auth.token;
+      const token = (getState() as RootState).auth.token?.replace(/['"]+/g, '');
       console.log("Token nah thakle tor khubor ase",token);
 
       if (token) {
-        // headers.set("Authorization", `Bearer ${token}`);
-        headers.set('authorization', `${token}`)
+        headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
     },

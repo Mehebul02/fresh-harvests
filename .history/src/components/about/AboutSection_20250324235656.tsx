@@ -9,7 +9,7 @@ const AboutSection = () => {
   return (
   
 
-<div className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
+<section className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
       {/* Left Side - Image Section */}
       <div className="relative w-full md:w-1/2 flex justify-center">
         <div className="relative w-[95%] sm:w-[85%] md:w-[80%] lg:w-[70%]">
@@ -39,7 +39,7 @@ const AboutSection = () => {
   initial={{ y: 0 }}
   animate={{ y: [0, -10, 0] }}
   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-  className="absolute bottom-2 left-52 sm:left-5 lg:left-72  lg:bottom-2 bg-white shadow-lg rounded-lg p-2 sm:p-3 text-center"
+  className="absolute bottom-2 left-52 sm:left-5 lg:left-  lg:bottom-2 bg-white shadow-lg rounded-lg p-2 sm:p-3 text-center"
 >
   <Image src={mushroom} alt="Mushroom" width={80} height={80} className="mx-auto" />
   <p className="text-xs sm:text-sm text-gray-600">Mushroom</p>
@@ -63,7 +63,7 @@ const AboutSection = () => {
         {/* button */}
         <CustomeButton className="md:ml-10" text="Read More" />
       </div>
-    </div>
+    </section>
  
   );
 };

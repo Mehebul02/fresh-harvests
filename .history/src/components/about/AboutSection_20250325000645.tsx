@@ -4,12 +4,14 @@ import { foodMan, logo, mushroom } from "@/app/assets";
 import { motion } from "framer-motion";
 import TitleSection from "../shared/TitleSection";
 import CustomeButton from "../shared/CustomeButton";
+import Container from "../shared/Container";
 
 const AboutSection = () => {
   return (
   
 
-<div className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
+<Container>
+<div className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 ">
       {/* Left Side - Image Section */}
       <div className="relative w-full md:w-1/2 flex justify-center">
         <div className="relative w-[95%] sm:w-[85%] md:w-[80%] lg:w-[70%]">
@@ -64,6 +66,7 @@ const AboutSection = () => {
         <CustomeButton className="md:ml-10" text="Read More" />
       </div>
     </div>
+</Container>
  
   );
 };

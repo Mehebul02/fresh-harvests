@@ -9,7 +9,7 @@ const AboutSection = () => {
   return (
   
 
-<div className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
+<section className="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
       {/* Left Side - Image Section */}
       <div className="relative w-full md:w-1/2 flex justify-center">
         <div className="relative w-[95%] sm:w-[85%] md:w-[80%] lg:w-[70%]">
@@ -63,7 +63,7 @@ const AboutSection = () => {
         {/* button */}
         <CustomeButton className="md:ml-10" text="Read More" />
       </div>
-    </div>
+    </section>
  
   );
 };
