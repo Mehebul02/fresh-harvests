@@ -28,7 +28,7 @@ const SpecialOffer = () => {
       {/* Content Section */}
       <Container className="  px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left Column - Text Section */}
-        <div className="text-left md:text-left space-y-6 mt-20 ">
+        <div className="text-left md:text-left space-y-6 mt-4 md:mt-20 ">
           <h1 className="text-[20px] text-[#749B3F] font-medium bg-[#749B3F1A] p-3 rounded-xl inline-block">
             Special Offer
           </h1>
